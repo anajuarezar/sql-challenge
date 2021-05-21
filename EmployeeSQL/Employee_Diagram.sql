@@ -1,18 +1,13 @@
-﻿-- Inspect the CSVs and sketch out an ERD of the tables.
--- Use the information you have to create a table schema for each of the six CSV files. 
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/qE7hsM
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-
--- We begin by using the Quick Database Diagrams tool. There we create the Physical Model Design of our information.
--- Once we have created the tables, defined the relations and established the keys, we export it to pgAmin.
--- Here we have the final result. 
--- During the exporting, the names of tables and varaibles were added "", so we must eliminate for the code to run. 
-
-CREATE TABLE Departments (
-    dept_no VARCHAR   NOT NULL,
-    dept_name VARCHAR   NOT NULL,
-    CONSTRAINT pk_Departments PRIMARY KEY (
-        dept_no
+CREATE TABLE "Departments" (
+    "dept_no" VARCHAR   NOT NULL,
+    "dept_name" VARCHAR   NOT NULL,
+    CONSTRAINT "pk_Departments" PRIMARY KEY (
+        "dept_no"
      )
 );
 
@@ -61,14 +56,14 @@ CREATE TABLE "Titles" (
      )
 );
 
-ALTER TABLE "Departments" ADD CONSTRAINT "fk_Departments_dept_no" FOREIGN KEY("dept_no")
-REFERENCES "Dept_emp" ("emp_no");
-
 ALTER TABLE "Dept_emp" ADD CONSTRAINT "fk_Dept_emp_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "Employees" ("emp_no");
 
 ALTER TABLE "Dept_emp" ADD CONSTRAINT "fk_Dept_emp_dept_no" FOREIGN KEY("dept_no")
-REFERENCES "Dept_manager" ("dept_no");
+REFERENCES "Departments" ("dept_no");
+
+ALTER TABLE "Dept_manager" ADD CONSTRAINT "fk_Dept_manager_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Dept_emp" ("emp_no");
 
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "Salary" ("empt_no");
