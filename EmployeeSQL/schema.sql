@@ -12,6 +12,7 @@
 -- Here we have the final result. 
 -- During the exporting, the names of tables and varaibles were added "", so we must eliminate for the code to run. 
 
+-- We begin with droping all tables and cascade. We do this in case there is a mistake with the schema and we need to do it again. 
 
 DROP TABLE IF EXISTS departments CASCADE;
 DROP TABLE IF EXISTS dept_emp CASCADE;
@@ -20,6 +21,10 @@ DROP TABLE IF EXISTS employees CASCADE;
 DROP TABLE IF EXISTS salary CASCADE;
 DROP TABLE IF EXISTS titles CASCADE;
 
+-- It's time to create our tables.
+-- It is important that before we begin writing the commands, we need to establish the relations between the tables.
+-- We need to  create them and import them accordingly.
+-- The first one will be employee. 
 
 CREATE TABLE employees (
 	emp_no INTEGER NOT NULL,
