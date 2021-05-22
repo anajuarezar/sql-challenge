@@ -62,10 +62,10 @@ FROM employees as e
 
 SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees as e
-  JOIN dept_manager as dm
-  ON e.emp_no = dm.emp_no
+  JOIN dept_emp as de
+  ON e.emp_no = de.emp_no
     JOIN departments as d
-	on dm.dept_no = d.dept_no
+	on de.dept_no = d.dept_no
 	WHERE d.dept_name = 'Sales' OR d.dept_name = 'Development';
 
 
