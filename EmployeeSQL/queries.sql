@@ -9,15 +9,6 @@ SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
 FROM employees AS e
   JOIN salary AS s
   ON (e.emp_no = s.emp_no);
-  
-CREATE VIEW employee_details AS
-SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
-FROM employees AS e
-  JOIN salary AS s
-  ON (e.emp_no = s.emp_no);
-  
-SELECT *
-FROM employee_details;
 
 -- 2. List first name, last name, and hire date for employees who were hired in 1986.
 
