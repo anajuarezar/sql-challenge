@@ -72,6 +72,7 @@ CREATE TABLE titles(
 	title_id VARCHAR (255) NOT NULL,
 	title VARCHAR (255) NOT NULL,
 	PRIMARY KEY (title_id)
+--	FOREIGN KEY (title_id) REFERENCES employees(emp_title_no_id)
 );
 
 CREATE TABLE departments (
