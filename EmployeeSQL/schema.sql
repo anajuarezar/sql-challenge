@@ -37,6 +37,30 @@ CREATE TABLE employees (
 	PRIMARY KEY (emp_no)
 );
 
+-- When we import the csv file to the employees table we made, we find a problem, the dates.
+-- To solve it, we need to catalogue the var as VARCHAR and transform it afterwards into the format we want.
+-- To do this we:
+
+SELECT TO_DATE ('7/25/1953','MM/DD/YYYY');
+
+SELECT TO_DATE(birth_date,'MM/DD/YYYY')
+FROM employees;
+
+SELECT EXTRACT(YEAR FROM TO_DATE(birth_date,'MM/DD/YYYY'))
+FROM employees;
+
+-- We do the same for hire_date
+
+SELECT TO_DATE ('4/28/1990','MM/DD/YYYY');
+
+SELECT TO_DATE(hire_date,'MM/DD/YYYY')
+FROM employees;
+
+SELECT EXTRACT(YEAR FROM TO_DATE(hire_date,'MM/DD/YYYY'))
+FROM employees;
+
+-- We continue with the salary table. Since it has a relation with the employees' table through emp_no.
+
 CREATE TABLE salary (
 	emp_no INTEGER NOT NULL,
 	salary INTEGER NOT NULL,
