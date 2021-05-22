@@ -2,7 +2,9 @@
 
 -- Once you have a complete database, do the following:
 -- 1. List the following details of each employee: employee number, last name, first name, sex, and salary.
--- In order to find each element we need to make a view which will include all of the details:
+
+-- In order to find each element we need to make a join on the emp_no of both tables.
+-- When we have our join, we just need to select the details we need. 
 
 
 SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
@@ -11,6 +13,9 @@ FROM employees AS e
   ON (e.emp_no = s.emp_no);
 
 -- 2. List first name, last name, and hire date for employees who were hired in 1986.
+-- This select is a little bit more complicated because of the date.
+-- Since we need all employees hired in 1986, we are goint to use EXTRACT and YEAR to get the year of each date.
+-- Afterwards, we just need to specify the year we need. 
 
 SELECT first_name, last_name, hire_date 
 FROM employees 
