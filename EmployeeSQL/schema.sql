@@ -96,3 +96,14 @@ CREATE TABLE dept_manager (
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 );
 
+---- Importing
+-- After we finished creating the tables, we must import the data to fill the tables.
+-- We will use the csv files we saved in our DATA file.
+-- Like with the creation of tables, we need a specific order to import the data. 
+-- Our order was:
+-- 1- Employees.
+-- 2. Salary.
+-- 3. Titles.
+-- 4. Departments.
+-- 5. Dept_manager.
+-- 6. Dept_emp
