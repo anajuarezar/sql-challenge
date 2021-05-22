@@ -14,7 +14,7 @@ FROM employees AS e
 
 SELECT first_name, last_name, hire_date 
 FROM employees 
-WHERE hire_date BETWEEN '01/01/1986' AND '12/31/1986';
+WHERE EXTRACT(YEAR FROM TO_DATE(hire_date,'MM/DD/YYYY')) = '1986';
 
 
 -- 3. List the manager of each department with the following information: 
