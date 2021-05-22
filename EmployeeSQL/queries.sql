@@ -24,19 +24,24 @@ WHERE EXTRACT(YEAR FROM TO_DATE(hire_date,'MM/DD/YYYY')) = '1986';
 
 -- 3. List the manager of each department with the following information: 
 -- department number, department name, the manager's employee number, last name, first name.
+-- To obtain the information of several tables, we need to make several joins.
+-- We need to join the dept_manager to the employees table, then we join the table with dept_emp to get to departments.
+-- Once we have all the tables join we select the info we need. 
+-- This joins must be inner, so when get to the dept_manger table, we only select the employees in that table. 
 
 SELECT dm.emp_no, dm.dept_no, d.dept_name, e.first_name, e.last_name
 FROM dept_manager as dm
-  INNER JOIN employees as e
+  JOIN employees as e
   ON dm.emp_no = e.emp_no
-    INNER JOIN dept_emp as de
+    JOIN dept_emp as de
 	ON e.emp_no = de.emp_no
-	INNER JOIN departments as d
+	JOIN departments as d
 	on de.dept_no = d.dept_no;
 
 
     
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
+-- This query is similar to the one before but we don't need the dept_manager table. 
 
 SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees as e
@@ -47,12 +52,20 @@ FROM employees as e
 
 
 -- 5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
+-- This is a simple select, the tricky part is in the filter. Since we need that BOTH those conditions are fullfilled,
+-- we are going to use AND in the WHERE. The first condition is simple, last_name needs to be Hercules.
+-- in the next one we need the wildcard %, this one will allow us to look for everything that STARTS with B.
+-- It needs to be AFTER B, since we want B to be the first letter.
+
+
 SELECT first_name, last_name, sex 
 FROM employees
 WHERE first_name = 'Hercules' AND last_name like 'B%'
 
 
 -- 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
+-- This query needs JOIN again, but we also need to be careful with the order in which we do it. 
+-- Finally, we just need to filter the join table using WHERE and the name of the department. 
 
 SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees as e
