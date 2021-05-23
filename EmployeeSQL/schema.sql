@@ -46,17 +46,12 @@ SELECT TO_DATE ('7/25/1953','MM/DD/YYYY');
 SELECT TO_DATE(birth_date,'MM/DD/YYYY')
 FROM employees;
 
-SELECT EXTRACT(YEAR FROM TO_DATE(birth_date,'MM/DD/YYYY'))
-FROM employees;
 
 -- We do the same for hire_date
 
 SELECT TO_DATE ('4/28/1990','MM/DD/YYYY');
 
 SELECT TO_DATE(hire_date,'MM/DD/YYYY')
-FROM employees;
-
-SELECT EXTRACT(YEAR FROM TO_DATE(hire_date,'MM/DD/YYYY'))
 FROM employees;
 
 -- We continue with the salary table. Since it has a relation with the employees' table through emp_no.
@@ -72,7 +67,6 @@ CREATE TABLE titles(
 	title_id VARCHAR (255) NOT NULL,
 	title VARCHAR (255) NOT NULL,
 	PRIMARY KEY (title_id)
---	FOREIGN KEY (title_id) REFERENCES employees(emp_title_no_id)
 );
 
 CREATE TABLE departments (
