@@ -77,6 +77,8 @@ FROM employees as e
 	
 
 -- 7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+-- This query is similar to the one before, but we need to include another department. However in the WHERE statement we must use OR
+-- so the command includes both departments. 
 
 SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees as e
@@ -87,8 +89,11 @@ FROM employees as e
 	WHERE d.dept_name = 'Sales' OR d.dept_name = 'Development';
 
 
-
 -- 8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+-- In this query we need to do several things:
+-- First, in the SELECT argument, we must include COUNT so we count how many times a last name is repeated, we use AS to save it.
+-- Then, that result must be GROUPED BY last name, so it can count the names that are repeated and show it by last name.
+-- Finally, we must use ORDER BY to sort it, we also add DESC to specify the order. 
 
 SELECT last_name, COUNT(last_name)  AS last_repeat
 FROM employees
